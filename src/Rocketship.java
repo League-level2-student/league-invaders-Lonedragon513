@@ -3,15 +3,30 @@ import java.awt.Graphics;
 
 
 public class Rocketship extends GameObject {
-	int speed;
+	boolean right;
+	boolean left;
+	boolean down;
+	boolean  up;
+//	int speed;
 	   Rocketship(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
-		speed=5;
+	//	speed=5;
 	   }
 
 	void update() {
-	    	
+			if (right) {
+	    		x++;
+	    	}
+	     	if (left) {
+	    		x--;
+	    	}
+	     	if (up) {
+	    		y--;
+	    	}
+	     	if (down) {
+	    		y++;
+	    	}
 	    }
 	    
 	    public void draw(Graphics g){

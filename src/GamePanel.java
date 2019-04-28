@@ -23,9 +23,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	int xx= 250;
 	int yy= 700;
 	Rocketship MainRock = new Rocketship (xx,yy,50,50);
+	ObjectManager ObjMan1= new ObjectManager(MainRock);
 
 	GamePanel() {
-		t = new Timer(1000 / 60, this);
+		// WEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGI
+		t = new Timer(1000 / 200000, this);
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	void updateGameState() {
-	MainRock.update();
+	ObjMan1.update();
 	
 	}
 
@@ -73,7 +75,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);   
-		MainRock.draw(g);
+		ObjMan1.draw(g);
 	}
 
 	void drawEndState(Graphics g) {
@@ -115,6 +117,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println(e.getKeyCode());
+		System.out.println(e.getKeyChar());
+		System.out.println(e.getKeyLocation());
+		System.out.println(e.getModifiers());
+
 		if (e.getKeyCode()==10) {
 			
 			currentState++;
@@ -123,26 +130,38 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
     }
 	}
 		if (e.getKeyCode()==37) {
-			System.out.println("l");
-			MainRock.x-=20;
+			MainRock.left=true;     		System.out.println("left+");
 		}
 		if (e.getKeyCode()==38) {
-			MainRock.y-=20;
-			System.out.println("up");
+			MainRock.up=true;			System.out.println("up+");
 		}
 		if (e.getKeyCode()==39) {
-			MainRock.x+=20;
-			System.out.println("right");
+			MainRock.right=true;			System.out.println("right+");
 		}
 		if (e.getKeyCode()==40) {
-			MainRock.y+=20;
-			System.out.println("down");
-}
+			MainRock.down=true;			System.out.println("down+");
+		}
+		
+		if(e.getKeyCode()==8) {
+			ObjMan1.addProjectile(new Projectile(MainRock.x+20, MainRock.y, 10, 10));
+
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (e.getKeyCode()==37) {
+			MainRock.left=false;     		System.out.println("left-");
+		}
+		if (e.getKeyCode()==38) {
+			MainRock.up=false;			System.out.println("up-");
+		}
+		if (e.getKeyCode()==39) {
+			MainRock.right=false;			System.out.println("right-");
+		}
+		if (e.getKeyCode()==40) {
+			MainRock.down=false;			System.out.println("down-");
+		}
 	}
 }
