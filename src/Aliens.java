@@ -10,6 +10,8 @@ public class Aliens extends GameObject{
 
 	
 	void update() {
+		super.update();
+
 		y++;
 	}
 	

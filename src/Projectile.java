@@ -6,10 +6,11 @@ public class Projectile extends GameObject {
 	Projectile(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
-		speed = 10;
+		speed = 1;
 	}
 
 	void update() {
+		super.update();
     	y-=speed;
     	if (y<1) {
     		isAlive=false;
@@ -20,5 +21,6 @@ public class Projectile extends GameObject {
     public void draw(Graphics g){
     	   g.setColor(Color.RED);
        g.fillRect(x, y, width, height);
+       System.out.println("©œ∑´®†¥");
     }
 }
