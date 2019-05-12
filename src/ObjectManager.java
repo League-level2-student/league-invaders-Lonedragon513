@@ -8,7 +8,8 @@ public class ObjectManager {
 	ArrayList<Projectile> Pro = new ArrayList<Projectile>();
 
 	long enemyTimer = 0;
-	int enemySpawnTime = 12345;
+	int enemySpawnTime = 1235;
+	int score = 0;
 
 	ObjectManager(Rocketship RanShip) {
 		this.RanShip = RanShip;
@@ -26,11 +27,11 @@ public class ObjectManager {
 			Aliens s = ALi.get(i);
 			s.update();
 		}
-		
+
 	}
 
 	void addProjectile(Projectile projectile) {
-		Pro.add(projectile);System.out.println(" ®†ƒ√∫˙"+Pro.size());
+		Pro.add(projectile);
 
 	}
 
@@ -39,11 +40,11 @@ public class ObjectManager {
 	}
 
 	public void draw(Graphics g) {
-		RanShip.draw(g);	
+		RanShip.draw(g);
 		for (int i = 0; i < Pro.size(); i++) {
 			Projectile s = Pro.get(i);
 			s.draw(g);
-			
+
 		}
 		for (int i = 0; i < ALi.size(); i++) {
 			Aliens s = ALi.get(i);
@@ -67,20 +68,34 @@ public class ObjectManager {
 			}
 		}
 	}
-	
-	void checkCollision (){
 
-for(Aliens a : ALi){
-        if(RanShip.collisionBox.intersects(a.collisionBox)){
-        	RanShip.isAlive = false;
-        }
-    	for (int i = ALi.size() - 1; i > 0 - 1; i--) {
-			Aliens s = ALi.get(i);
-			//A#WEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhfWEROKPJidhgwirehgksldhf
-}
+	void checkCollision() {
 
+		for (Aliens a : ALi) {
+			if (RanShip.collisionBox.intersects(a.collisionBox)) {
+				RanShip.isAlive = false;
+			}
+
+			for (Projectile p : Pro) {
+				for (Aliens al : ALi) {
+					if (al.collisionBox.intersects(p.collisionBox)) {
+						al.isAlive = false;
+						
+						scoreSAAAAAAA(1);
+					}
+				}
+			}
+
+		}
 
 	}
-
-}
+	
+	void scoreSAAAAAAA (int score) {
+		this.score+=score;
+	}
+	
+	int scoreGetter() {
+		
+		return score;
+	}
 }

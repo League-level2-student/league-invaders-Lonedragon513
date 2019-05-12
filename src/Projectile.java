@@ -21,6 +21,6 @@ public class Projectile extends GameObject {
     public void draw(Graphics g){
     	   g.setColor(Color.RED);
        g.fillRect(x, y, width, height);
-       System.out.println("©œ∑´®†¥");
+
     }
 }
