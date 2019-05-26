@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	GamePanel() {
 		// WEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGIWEUIKUYXESDFGVHBDISOHGSDIUUIDSGI
-		t = new Timer(1000 / 600, this);
+		t = new Timer(1 / 604789650, this);
 		try {
 
             alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
@@ -96,14 +96,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.drawString("LEAGUE INVADERS", 20, 200);
 		g.setFont(midTitle);
 		g.drawString("Press ENTER to start", 120, 400);
-		g.setFont(SpaceTitle);
+		g.setFont(SpaceTitle);  
 		g.drawString("Press SPACE for instructions", 90, 600);
 
 	}
 
 	void drawGameState(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, LeagueInvaders.width, LeagueInvaders.height);
+		  g.drawImage(GamePanel.spaceImg, 0, 0, LeagueInvaders.width, LeagueInvaders.height, null);
 		ObjMan1.draw(g);
 	}
 
